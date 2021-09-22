@@ -1,7 +1,45 @@
-.hello {
-    color: red;
-  }
+body {
+  width: 100%;
+}
+
+#container {
+  width: 80%;
+  margin: auto;
+  padding: 30px;
+  -webkit-box-shadow: -5px 9px 17px 6px rgba(0,0,0,0.71); 
+  box-shadow: -5px 9px 17px 6px rgba(0,0,0,0.71);
+}
+
+#input {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+#list-container {
+  padding-left: 0;
+}
+
+.task {
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+  padding: 10px;
+  list-style: none;
+}
+
+.task:hover {
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(245,235,156,1) 0%, rgba(252,252,244,1) 100%);
+  cursor: pointer;
+}
+
+#delete-completed {
+  cursor: pointer;
+  text-align: center;
+  background-color: rgba(0, 0, 0, .1);
+  padding: 15px;
+}
 
 .completed {
   text-decoration: line-through ;
 }
+

@@ -36,11 +36,20 @@ let renderList = (item) => {
   const listContainer = document.getElementById('list-container');
   let task = document.createElement('LI');
   let textNode = document.createTextNode(item.description);
+  let span = document.createElement('SPAN');
+  let checkbox = document.createElement('input');
+  checkbox.setAttribute('type','checkbox');
+  
+  task.setAttribute('class', 'task');
   //    console.log(list[i].completed);
       if (item.completed == true){
   //      console.log('If is true')
-        task.setAttribute('class', 'completed');
+        task.setAttribute('class', 'completed task');
+        checkbox.checked = true;
+
       }
+      span.appendChild(checkbox);
+      task.appendChild(span);
       task.appendChild(textNode);
       listContainer.appendChild(task);
 }
