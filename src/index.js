@@ -20,7 +20,7 @@ import './style.css';
     },
     {
       "description": "Wash the dishes",
-      "completed": false,
+      "completed": true,
       "index": 1
     },
     {
@@ -31,16 +31,22 @@ import './style.css';
   ]
 
 let renderList = () => {
+  console.log('rendering ...')
     const listContainer = document.getElementById('list-container');
     for (let i = 0; i < list.length; i++){
+      console.log('for...');
       let task = document.createElement('LI');
       let textNode = document.createTextNode(list[i].description);
+      console.log(list[i].completed);
+      if (list[i].completed == true){
+        console.log('If is true')
+        task.setAttribute('class', 'completed');
+      }
       task.appendChild(textNode);
       listContainer.appendChild(task);
     }
 }
 
-window.addEventListener('load', renderList);
 const input = document.getElementById('input');
 input.addEventListener('keypress', function (e){
   if (e.key === 'Enter') {
@@ -56,5 +62,9 @@ let addNewTask = () => {
   list.push(newTask);
   console.log(list);
 }
+
+
+
+window.addEventListener('load', renderList);
 
 
