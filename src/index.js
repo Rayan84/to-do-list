@@ -30,7 +30,7 @@ import './style.css';
     },
   ]
 
-  let renderList = () => {
+let renderList = () => {
     const listContainer = document.getElementById('list-container');
     for (let i = 0; i < list.length; i++){
       let task = document.createElement('LI');
@@ -40,8 +40,21 @@ import './style.css';
     }
 }
 
+window.addEventListener('load', renderList);
+const input = document.getElementById('input');
+input.addEventListener('keypress', function (e){
+  if (e.key === 'Enter') {
+    addNewTask();
+  }
+})
+let addNewTask = () => {
+  let newTask = {
+  "description": document.getElementById('input').value,
+  "completed": false,
+  "index": list.length,
+  };
+  list.push(newTask);
+  console.log(list);
+}
 
 
-
-
-  window.addEventListener('load', renderList);
