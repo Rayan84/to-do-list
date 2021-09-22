@@ -39,6 +39,11 @@ body {
   padding: 15px;
 }
 
+.float-right,
+.ellipses {
+  float: right;
+}
+
 .completed {
   text-decoration: line-through ;
 }
@@ -46,8 +51,7 @@ body {
 .checkbox {
   margin-right: 20px;
 }
-
-.ellipses {
-  float: right;
+ 
+.font-weight-100 {
+  font-weight: lighter;
 }
-
