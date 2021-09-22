@@ -43,3 +43,11 @@ body {
   text-decoration: line-through ;
 }
 
+.checkbox {
+  margin-right: 20px;
+}
+
+.ellipses {
+  float: right;
+}
+

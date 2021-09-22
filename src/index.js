@@ -20,7 +20,7 @@ import './style.css';
     },
     {
       "description": "Wash the dishes",
-      "completed": true,
+      "completed": false,
       "index": 1
     },
     {
@@ -32,32 +32,36 @@ import './style.css';
  
 
 let renderList = (item) => {
- // console.log('rendering ...')
   const listContainer = document.getElementById('list-container');
   let task = document.createElement('LI');
   let textNode = document.createTextNode(item.description);
   let span = document.createElement('SPAN');
-  let checkbox = document.createElement('input');
+  let checkbox = document.createElement('INPUT');
+  let span2 = document.createElement('SPAN');
+  let span2Text = document.createTextNode('\u22ee');
   checkbox.setAttribute('type','checkbox');
+  checkbox.setAttribute('class', 'checkbox');
   
   task.setAttribute('class', 'task');
-  //    console.log(list[i].completed);
       if (item.completed == true){
-  //      console.log('If is true')
         task.setAttribute('class', 'completed task');
         checkbox.checked = true;
-
       }
       span.appendChild(checkbox);
       task.appendChild(span);
       task.appendChild(textNode);
+      span2.appendChild(span2Text);
+      span2.setAttribute('class', 'ellipses');
+      task.appendChild(span2);
       listContainer.appendChild(task);
 }
+
+
 
 let readSavedTasks = () => {
   for (let i = 0; i < list.length; i++){
     renderList(list[i]);
-} 
+  } 
 }
 
 const input = document.getElementById('input');
