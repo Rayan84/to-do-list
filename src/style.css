@@ -55,3 +55,7 @@ body {
 .font-weight-100 {
   font-weight: lighter;
 }
+
+.display-flex {
+  display: flex;
+}

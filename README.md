@@ -18,7 +18,7 @@ This project consists of building a to do list webpage, demonstrating JS, Webpac
 
 ## Rayan Rassam
 * Github:[@Rayan84](https://github.com/Rayan84)
-* Twitter:[@Rayan65096267]https://twitter.com/Rayan65096267
+* Twitter:[@Rayan65096267](https://twitter.com/Rayan65096267)
 * LinkedIn:[rayan-rassam](https://www.linkedin.com/in/rayan-rassam/)
 
 ## Contributing
