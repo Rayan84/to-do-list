@@ -21,5 +21,14 @@
   },
   "dependencies": {
     "lodash": "^4.17.21"
-  }
+  },
+  "main": "webpack.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rayan84/to-do-list.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Rayan84/to-do-list/issues"
+  },
+  "homepage": "https://github.com/Rayan84/to-do-list#readme"
 }
