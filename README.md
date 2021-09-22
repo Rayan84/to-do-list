@@ -14,8 +14,7 @@ This project consists of building a to do list webpage, demonstrating JS, Webpac
 * VS Code
 * ESLint
 
-
-# Authors
+## Authors
 
 ## Rayan Rassam
 * Github:[@Rayan84](https://github.com/Rayan84)
