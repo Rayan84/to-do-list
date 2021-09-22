@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import './style.css';
 
   let list = [
@@ -9,7 +8,7 @@ import './style.css';
     },
     {
       "description": "Wash the dishes",
-      "completed": false,
+      "completed": true,
       "index": 1
     },
     {
