@@ -2,10 +2,6 @@
     color: red;
   }
 
-  body {
-    background-color: bisque;
-}
-
 .completed {
   text-decoration: line-through ;
 }

@@ -16,7 +16,7 @@ import './style.css';
     {
       "description": "Finish To Do project",
       "completed": false,
-      "index": 1
+      "index": 0
     },
     {
       "description": "Wash the dishes",
@@ -26,25 +26,29 @@ import './style.css';
     {
       "description": "Cook rice",
       "completed": false,
-      "index": 1
+      "index": 2
     },
   ]
+ 
 
-let renderList = () => {
-  console.log('rendering ...')
-    const listContainer = document.getElementById('list-container');
-    for (let i = 0; i < list.length; i++){
-      console.log('for...');
-      let task = document.createElement('LI');
-      let textNode = document.createTextNode(list[i].description);
-      console.log(list[i].completed);
-      if (list[i].completed == true){
-        console.log('If is true')
+let renderList = (item) => {
+ // console.log('rendering ...')
+  const listContainer = document.getElementById('list-container');
+  let task = document.createElement('LI');
+  let textNode = document.createTextNode(item.description);
+  //    console.log(list[i].completed);
+      if (item.completed == true){
+  //      console.log('If is true')
         task.setAttribute('class', 'completed');
       }
       task.appendChild(textNode);
       listContainer.appendChild(task);
-    }
+}
+
+let readSavedTasks = () => {
+  for (let i = 0; i < list.length; i++){
+    renderList(list[i]);
+} 
 }
 
 const input = document.getElementById('input');
@@ -61,10 +65,15 @@ let addNewTask = () => {
   };
   list.push(newTask);
   console.log(list);
+  renderList(list[list.length-1]);
 }
+let deleteCompleted = () => {
+  console.log('deleteCompleted called...')
+  let completedTasks = document.querySelectorAll('.completed');
+  for (let i = 0; i < completedTasks.length; i++){
+    completedTasks[i].remove();
+  }
+}
+document.getElementById('delete-completed').addEventListener('click', deleteCompleted);
 
-
-
-window.addEventListener('load', renderList);
-
-
+window.addEventListener('load', readSavedTasks);
