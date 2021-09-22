@@ -1,13 +1,13 @@
 # To Do List
 This project consists of building a to do list webpage, demonstrating JS, Webpack, HTML and CSS skills.
 
-# [Screenshot]
+## Screenshot
 <img src='./media/screenshot.png'>
 
-# Live Demo
+## Live Demo
 [Live Demo Link](https://)
 
-# Built With
+## Built With
 * CSS
 * HTML
 * JavaScript
