@@ -1,4 +1,5 @@
 import './style.css';
+import _ from 'lodash'; 
 
   let list = [
     {
