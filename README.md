@@ -5,7 +5,7 @@ This project consists of building a to do list webpage, demonstrating JS, Webpac
 <img src='./media/screenshot.png'>
 
 ## Live Demo
-[Live Demo Link](https://rayan84.github.io/to-do-list/
+[Live Demo Link](https://rayan84.github.io/to-do-list/)
 
 ## Built With
 * CSS
