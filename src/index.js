@@ -1,5 +1,7 @@
 import './style.css';
-import _ from 'lodash'; 
+import _ from 'lodash';
+import {saveToLocalStorage} from './checkbox.js';
+import {retrieveLocalStorage} from './checkbox';
 
   let list = [
     {
@@ -20,7 +22,7 @@ import _ from 'lodash';
   ]
  
 
-let renderList = (item) => {
+export let renderList = (item) => {
   const listContainer = document.getElementById('list-container');
   let task = document.createElement('LI');
   let textNode = document.createTextNode(item.description);
@@ -45,14 +47,6 @@ let renderList = (item) => {
       listContainer.appendChild(task);
 }
 
-
-
-let readSavedTasks = () => {
-  for (let i = 0; i < list.length; i++){
-    renderList(list[i]);
-  } 
-}
-
 const input = document.getElementById('input');
 input.addEventListener('keypress', function (e){
   if (e.key === 'Enter') {
@@ -60,15 +54,27 @@ input.addEventListener('keypress', function (e){
   }
 })
 let addNewTask = () => {
+  let indexing;
+  if(localStorage.getItem('todos') == null){
+    indexing = 0;
+   // let existing = JSON.parse(localStorage.getItem('todos'));
+   // indexing = existing.length;
+  // console.log(localStorage.getItem('todos').length;
+   console.log('Storage is empty')
+  }else {
+    console.log('Storage is not empty');
+    var arrayFromStroage = JSON.parse(localStorage.getItem("todos"));
+    indexing = arrayFromStroage.length;
+  }
   let newTask = {
+  "index": indexing,
   "description": document.getElementById('input').value,
   "completed": false,
-  "index": list.length,
-  };
-  list.push(newTask);
-  console.log(list);
-  renderList(list[list.length-1]);
+  }
+  //console.lo('New task index is: ' + indexing);
+  saveToLocalStorage(newTask);
 }
+
 let deleteCompleted = () => {
   console.log('deleteCompleted called...')
   let completedTasks = document.querySelectorAll('.completed');
@@ -78,4 +84,4 @@ let deleteCompleted = () => {
 }
 document.getElementById('delete-completed').addEventListener('click', deleteCompleted);
 
-window.addEventListener('load', readSavedTasks);
+window.addEventListener('load', retrieveLocalStorage);
