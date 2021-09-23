@@ -2,25 +2,8 @@ import './style.css';
 import _ from 'lodash';
 import {saveToLocalStorage} from './checkbox.js';
 import {retrieveLocalStorage} from './checkbox';
-
-  let list = [
-    {
-      "description": "Finish To Do project",
-      "completed": false,
-      "index": 0
-    },
-    {
-      "description": "Wash the dishes",
-      "completed": true,
-      "index": 1
-    },
-    {
-      "description": "Cook rice",
-      "completed": false,
-      "index": 2
-    },
-  ]
- 
+import {checkboxFunctions} from './checkbox';
+import { checkboxesEventListener } from './checkbox.js';
 
 export let renderList = (item) => {
   const listContainer = document.getElementById('list-container');
@@ -32,7 +15,8 @@ export let renderList = (item) => {
   let span2Text = document.createTextNode('\u22ee');
   checkbox.setAttribute('type','checkbox');
   checkbox.setAttribute('class', 'checkbox');
-  
+ // checkbox.addEventListener('change', checkboxFunctions(textNode));
+  checkboxesEventListener();
   task.setAttribute('class', 'task');
       if (item.completed == true){
         task.setAttribute('class', 'completed task');

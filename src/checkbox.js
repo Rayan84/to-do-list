@@ -1,8 +1,27 @@
 import {renderList} from './index.js';
-export function checkboxFunctions(){
-   // let checkboxes = document.querySelectorAll('.checkbox');
 
+export function checkboxesEventListener(){
+    let checkboxes = document.querySelectorAll('.checkbox');
+    console.log(checkboxes.length);
+   for (let i = 0; i < checkboxes.length; i++){
+        checkboxes[i].addEventListener('change', checkboxFunctions);
+                        
+       }
+    }
+
+export function checkboxFunctions(){
+    if (this.checked == true){
+        this.parentNode.parentNode.className = 'completed task';
+        console.log('checked')
+    }else {
+        this.parentNode.parentNode.className = 'task';
+        console.log('unchecked')
+    }
 }
+     ///   if (box.checked == true){
+       // checkboxes.parentNode.parentNode.setAttribute('class', 'completed');
+       // lert('Checked');
+        
 
 export function retrieveLocalStorage() {
     if (localStorage.getItem('todos') == null){
