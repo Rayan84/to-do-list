@@ -3,9 +3,9 @@ import _ from 'lodash';
 import {saveToLocalStorage} from './checkbox.js';
 import {retrieveLocalStorage} from './checkbox';
 import {checkboxFunctions} from './checkbox';
-import { checkboxesEventListener } from './checkbox.js';
+//import { checkboxesEventListener } from './checkbox.js';
 
-export let renderList = (item) => {
+export let renderList = (item, num) => {
   const listContainer = document.getElementById('list-container');
   let task = document.createElement('LI');
   let textNode = document.createTextNode(item.description);
@@ -14,14 +14,14 @@ export let renderList = (item) => {
   let span2 = document.createElement('SPAN');
   let span2Text = document.createTextNode('\u22ee');
   checkbox.setAttribute('type','checkbox');
-  checkbox.setAttribute('class', 'checkbox');
- // checkbox.addEventListener('change', checkboxFunctions(textNode));
-  checkboxesEventListener();
+  checkbox.setAttribute('class', 'checkbox'); 
   task.setAttribute('class', 'task');
+  task.setAttribute('id', num);
       if (item.completed == true){
         task.setAttribute('class', 'completed task');
         checkbox.checked = true;
       }
+      checkbox.addEventListener('change', checkboxFunctions);  
       span.appendChild(checkbox);
       task.appendChild(span);
       task.appendChild(textNode);
@@ -41,10 +41,7 @@ let addNewTask = () => {
   let indexing;
   if(localStorage.getItem('todos') == null){
     indexing = 0;
-   // let existing = JSON.parse(localStorage.getItem('todos'));
-   // indexing = existing.length;
-  // console.log(localStorage.getItem('todos').length;
-   console.log('Storage is empty')
+    console.log('Storage is empty')
   }else {
     console.log('Storage is not empty');
     var arrayFromStroage = JSON.parse(localStorage.getItem("todos"));
@@ -57,6 +54,7 @@ let addNewTask = () => {
   }
   //console.lo('New task index is: ' + indexing);
   saveToLocalStorage(newTask);
+  renderList(newTask, indexing)
 }
 
 let deleteCompleted = () => {

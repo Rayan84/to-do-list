@@ -2,6 +2,14 @@ body {
   width: 100%;
 }
 
+h1 {
+  margin-right: 19px;
+}
+
+.margin-right-16 {
+  margin-right: 16px;
+}
+
 #container {
   width: 80%;
   margin: auto;

@@ -1,27 +1,20 @@
 import {renderList} from './index.js';
 
-export function checkboxesEventListener(){
-    let checkboxes = document.querySelectorAll('.checkbox');
-    console.log(checkboxes.length);
-   for (let i = 0; i < checkboxes.length; i++){
-        checkboxes[i].addEventListener('change', checkboxFunctions);
-                        
-       }
-    }
-
 export function checkboxFunctions(){
+    let existingEntries = JSON.parse(localStorage.getItem('todos'));
+    let entry = existingEntries[this.parentNode.parentNode.id]
+
+
     if (this.checked == true){
         this.parentNode.parentNode.className = 'completed task';
-        console.log('checked')
+        entry.completed = true;
     }else {
         this.parentNode.parentNode.className = 'task';
-        console.log('unchecked')
+        console.log('unchecked');
+        entry.completed = false;
     }
-}
-     ///   if (box.checked == true){
-       // checkboxes.parentNode.parentNode.setAttribute('class', 'completed');
-       // lert('Checked');
-        
+    localStorage.setItem('todos', JSON.stringify(existingEntries));
+}        
 
 export function retrieveLocalStorage() {
     if (localStorage.getItem('todos') == null){
@@ -32,8 +25,8 @@ export function retrieveLocalStorage() {
         for (let i = 0; i < existingEntries.length; i++ ){
             console.log('Rendering ' + i);
             console.log(existingEntries[i]);
-            renderList(existingEntries[i]);
-            //return (true);
+            let indexing = (existingEntries[i].index);
+            renderList(existingEntries[i], indexing);
         }
     }
 }
