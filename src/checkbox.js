@@ -1,5 +1,5 @@
 import {renderList} from './index.js';
-
+import _ from 'lodash'; // eslint-disable-line
 export function checkboxFunctions(){
     let existingEntries = JSON.parse(localStorage.getItem('todos'));
     let entry = existingEntries[this.parentNode.parentNode.id]

@@ -1,9 +1,7 @@
 import './style.css';
-import _ from 'lodash';
 import {saveToLocalStorage} from './checkbox.js';
 import {retrieveLocalStorage} from './checkbox';
 import {checkboxFunctions} from './checkbox';
-//import { checkboxesEventListener } from './checkbox.js';
 
 export let renderList = (item, num) => {
   const listContainer = document.getElementById('list-container');
@@ -35,6 +33,7 @@ const input = document.getElementById('input');
 input.addEventListener('keypress', function (e){
   if (e.key === 'Enter') {
     addNewTask();
+    document.getElementById('input').value = '';
   }
 })
 let addNewTask = () => {
