@@ -12,7 +12,7 @@ export let renderList = (item, num) => {
   let span2 = document.createElement('SPAN');
   let span2Text = document.createTextNode('\u22ee');
   checkbox.setAttribute('type','checkbox');
-  checkbox.setAttribute('class', 'checkbox'); 
+  checkbox.setAttribute('class', 'checkbox');
   task.setAttribute('class', 'task');
   task.setAttribute('id', num);
       if (item.completed == true){
@@ -26,6 +26,7 @@ export let renderList = (item, num) => {
       span2.appendChild(span2Text);
       span2.setAttribute('class', 'ellipses');
       task.appendChild(span2);
+      task.draggable = 'true'
       listContainer.appendChild(task);
 }
 
