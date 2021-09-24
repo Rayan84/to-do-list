@@ -5,10 +5,10 @@ import {checkboxFunctions} from './checkbox.js';
 import {saveChanges} from './checkbox.js';
 import { showTrashBin } from './add-and-remove.js';
 import {deleteCompleted} from './add-and-remove.js';
-import { countBy } from 'lodash';
+import { countBy } from 'lodash'; // eslint-disable-line
 
 export let renderList = (item, num) => {
-  console.log('rendering new item...');
+  console.log('rendering new it')
   const listContainer = document.getElementById('list-container');
   let task = document.createElement('LI');
   let descriptionSpan = document.createElement('SPAN');
@@ -54,12 +54,9 @@ input.addEventListener('keypress', function (e){
 
 let addNewTask = () => {
   let indexing;
-  console.log(localStorage.getItem('todos').length);
   if(localStorage.getItem('todos').length < 3){
     indexing = 0;
-    //console.log('Storage is empty')
   }else {
-   // console.log('Storage is not empty');
     var arrayFromStroage = JSON.parse(localStorage.getItem("todos"));
     const lastItem = arrayFromStroage[arrayFromStroage.length - 1];
     indexing = lastItem.index + 1;
@@ -69,9 +66,7 @@ let addNewTask = () => {
   "description": document.getElementById('input').value,
   "completed": false,
   }
-  //console.lo('New task index is: ' + indexing);
   saveToLocalStorage(newTask);
-  //localStorage.setItem('count', indexing);
   renderList(newTask, indexing);
 }
 
