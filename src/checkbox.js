@@ -1,51 +1,48 @@
 import {renderList} from './index.js';
 import _ from 'lodash'; // eslint-disable-line
 export function checkboxFunctions(){
+    let checkedItme = this.parentNode.parentNode.id;
     let existingEntries = JSON.parse(localStorage.getItem('todos'));
-    let entry = existingEntries[this.parentNode.parentNode.id]
-
-
+    let entry = existingEntries.find(obj => obj.index == checkedItme)
     if (this.checked == true){
-        this.parentNode.parentNode.className = 'completed task';
-        entry.completed = true;
+        this.parentNode.nextSibling.className = 'completed description';
+       entry.completed = true;
     }else {
-        this.parentNode.parentNode.className = 'task';
-        console.log('unchecked');
+        this.parentNode.nextSibling.className = 'description';
         entry.completed = false;
     }
     localStorage.setItem('todos', JSON.stringify(existingEntries));
-}        
+ }        
 
 export function retrieveLocalStorage() {
-    if (localStorage.getItem('todos') == null){
-        console.log('No saved entries found...');
-    }else {
-        console.log('Saved entries found...');
+    if (localStorage.getItem('todos') !== null){
         let existingEntries = JSON.parse(localStorage.getItem('todos'));
         for (let i = 0; i < existingEntries.length; i++ ){
-            console.log('Rendering ' + i);
-            console.log(existingEntries[i]);
             let indexing = (existingEntries[i].index);
             renderList(existingEntries[i], indexing);
-        }
+         }
+        }else {
+            localStorage.setItem('todos', '[]');
     }
 }
 
 export function saveToLocalStorage(obj){
-    console.log ('saveToLocalStorage called...');
     if (localStorage.getItem('todos') !== null){
-      console.log(' if is ture');
       let existingEntries = JSON.parse(localStorage.getItem('todos'));
-      console.log(existingEntries);
       existingEntries.push(obj);
       localStorage.setItem('todos', JSON.stringify(existingEntries));
-      console.log('Saved to the existing entries...'); 
     }else {
-        console.log('else is true');
       let a = [];
       a.push(obj);
       localStorage.setItem('todos', JSON.stringify(a));
-      console.log('Saved the first entry');
+    }
+}
 
-    }    
+
+export function saveChanges () {
+    let changedItem = this.parentNode.id;
+    let existingEntries = JSON.parse(localStorage.getItem('todos'));
+    let entryIndex = existingEntries.indexOf(existingEntries.find(obj => obj.index == changedItem));
+    existingEntries[entryIndex].description = this.textContent;
+    localStorage.setItem('todos', JSON.stringify(existingEntries));
 }

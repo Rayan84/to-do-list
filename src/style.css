@@ -28,10 +28,28 @@ h1 {
   padding-left: 0;
 }
 
+#enter-button:hover {
+  background-color: darkgray;
+  cursor: pointer;
+}
+
 .task {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding: 10px;
   list-style: none;
+  outline: none;
+}
+
+.description {
+  width: 90%;
+  display: inline-block;
+  outline: none;
+  line-height: 90%;
+  padding-left: 10px;
+}
+
+.description:focus {
+  border-left: darkgray solid 1px;
 }
 
 .task:hover {
