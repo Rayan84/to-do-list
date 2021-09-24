@@ -6,7 +6,10 @@ import {checkboxFunctions} from './checkbox';
 export let renderList = (item, num) => {
   const listContainer = document.getElementById('list-container');
   let task = document.createElement('LI');
-  let textNode = document.createTextNode(item.description);
+  let descriptionSpan = document.createElement('SPAN');
+  descriptionSpan.innerHTML = item.description;
+  descriptionSpan.contentEditable = 'true';
+  descriptionSpan.setAttribute('class', 'description');
   let span = document.createElement('SPAN');
   let checkbox = document.createElement('INPUT');
   let span2 = document.createElement('SPAN');
@@ -22,7 +25,7 @@ export let renderList = (item, num) => {
       checkbox.addEventListener('change', checkboxFunctions);  
       span.appendChild(checkbox);
       task.appendChild(span);
-      task.appendChild(textNode);
+      task.appendChild(descriptionSpan);
       span2.appendChild(span2Text);
       span2.setAttribute('class', 'ellipses');
       task.appendChild(span2);
