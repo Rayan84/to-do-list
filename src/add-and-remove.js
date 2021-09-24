@@ -23,11 +23,9 @@ export let deleteCompleted = () => {
 
 export let changeIndexes = () => {
   let lis = document.querySelectorAll('LI');
-  console.log('changeIndex called...');
   let existingEntries = JSON.parse(localStorage.getItem('todos'));
   for (let i = 0; i < existingEntries.length; i++){
     existingEntries[i].index = i;
-    console.log(existingEntries[i].index);
     lis[i].id = i;
   }
   localStorage.setItem('todos', JSON.stringify(existingEntries));
@@ -40,7 +38,6 @@ export function showTrashBin(){
   if (trashCan.textContent == '\u22ee'){
     trashCan.innerHTML = '&#128465;';
     setTimeout(function(){
-      console.log('timing...');
       trashCan.innerHTML = '\u22ee';
     }, 3000);
   } else {

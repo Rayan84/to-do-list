@@ -28,6 +28,11 @@ h1 {
   padding-left: 0;
 }
 
+#enter-button:hover {
+  background-color: darkgray;
+  cursor: pointer;
+}
+
 .task {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding: 10px;
@@ -59,6 +64,7 @@ h1 {
   background-color: rgba(0, 0, 0, 0.1);
   padding: 15px;
 }
+
 
 .float-right,
 .ellipses {

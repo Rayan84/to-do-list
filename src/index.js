@@ -8,7 +8,6 @@ import {deleteCompleted} from './add-and-remove.js';
 import { countBy } from 'lodash'; // eslint-disable-line
 
 export let renderList = (item, num) => {
-  console.log('rendering new it')
   const listContainer = document.getElementById('list-container');
   let task = document.createElement('LI');
   let descriptionSpan = document.createElement('SPAN');
@@ -41,14 +40,22 @@ export let renderList = (item, num) => {
 }
 
 const input = document.getElementById('input');
+const enterButton = document.getElementById('enter-button');
+
+
+let enter = () => {
+  if (document.getElementById('input').value == ''){
+    alert ("Please enter something");
+    return false
+  }
+  addNewTask();
+  document.getElementById('input').value = '';
+}
+
+enterButton.addEventListener('click', enter);
 input.addEventListener('keypress', function (e){
   if (e.key === 'Enter') {
-    if (document.getElementById('input').value == ''){
-      alert ("Please enter something");
-      return false
-    }
-    addNewTask();
-    document.getElementById('input').value = '';
+    enter();
   }
 })
 

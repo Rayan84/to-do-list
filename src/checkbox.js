@@ -3,10 +3,7 @@ import _ from 'lodash'; // eslint-disable-line
 export function checkboxFunctions(){
     let checkedItme = this.parentNode.parentNode.id;
     let existingEntries = JSON.parse(localStorage.getItem('todos'));
-    console.log(this.parentNode.parentNode.id);
-
-     console.log(existingEntries);
-     let entry = existingEntries.find(obj => obj.index == checkedItme)
+    let entry = existingEntries.find(obj => obj.index == checkedItme)
     if (this.checked == true){
         this.parentNode.nextSibling.className = 'completed description';
        entry.completed = true;
@@ -30,7 +27,6 @@ export function retrieveLocalStorage() {
 }
 
 export function saveToLocalStorage(obj){
-    console.log ('saveToLocalStorage called...');
     if (localStorage.getItem('todos') !== null){
       let existingEntries = JSON.parse(localStorage.getItem('todos'));
       existingEntries.push(obj);
@@ -44,10 +40,7 @@ export function saveToLocalStorage(obj){
 
 
 export function saveChanges () {
-    console.log('savechanges called...');
     let changedItem = this.parentNode.id;
-
-    console.log('changed item id is: ' + changedItem);
     let existingEntries = JSON.parse(localStorage.getItem('todos'));
     let entryIndex = existingEntries.indexOf(existingEntries.find(obj => obj.index == changedItem));
     existingEntries[entryIndex].description = this.textContent;
