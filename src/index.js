@@ -1,7 +1,8 @@
 import './style.css';
 import {saveToLocalStorage} from './checkbox.js';
-import {retrieveLocalStorage} from './checkbox';
-import {checkboxFunctions} from './checkbox';
+import {retrieveLocalStorage} from './checkbox.js';
+import {checkboxFunctions} from './checkbox.js';
+import {saveChanges} from './checkbox.js';
 
 export let renderList = (item, num) => {
   const listContainer = document.getElementById('list-container');
@@ -10,6 +11,7 @@ export let renderList = (item, num) => {
   descriptionSpan.innerHTML = item.description;
   descriptionSpan.contentEditable = 'true';
   descriptionSpan.setAttribute('class', 'description');
+  descriptionSpan.addEventListener('keyup', saveChanges);
   let span = document.createElement('SPAN');
   let checkbox = document.createElement('INPUT');
   let span2 = document.createElement('SPAN');
@@ -19,7 +21,7 @@ export let renderList = (item, num) => {
   task.setAttribute('class', 'task');
   task.setAttribute('id', num);
       if (item.completed == true){
-        task.setAttribute('class', 'completed task');
+        descriptionSpan.setAttribute('class', 'completed description');
         checkbox.checked = true;
       }
       checkbox.addEventListener('change', checkboxFunctions);  
@@ -36,17 +38,22 @@ export let renderList = (item, num) => {
 const input = document.getElementById('input');
 input.addEventListener('keypress', function (e){
   if (e.key === 'Enter') {
+    if (document.getElementById('input').value == ''){
+      alert ("Please enter something");
+      return false
+    }
     addNewTask();
     document.getElementById('input').value = '';
   }
 })
+
 let addNewTask = () => {
   let indexing;
   if(localStorage.getItem('todos') == null){
     indexing = 0;
-    console.log('Storage is empty')
+    //console.log('Storage is empty')
   }else {
-    console.log('Storage is not empty');
+   // console.log('Storage is not empty');
     var arrayFromStroage = JSON.parse(localStorage.getItem("todos"));
     indexing = arrayFromStroage.length;
   }
@@ -61,7 +68,7 @@ let addNewTask = () => {
 }
 
 let deleteCompleted = () => {
-  console.log('deleteCompleted called...')
+  //console.log('deleteCompleted called...')
   let completedTasks = document.querySelectorAll('.completed');
   for (let i = 0; i < completedTasks.length; i++){
     completedTasks[i].remove();
@@ -70,3 +77,4 @@ let deleteCompleted = () => {
 document.getElementById('delete-completed').addEventListener('click', deleteCompleted);
 
 window.addEventListener('load', retrieveLocalStorage);
+

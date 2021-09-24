@@ -40,11 +40,11 @@ h1 {
   display: inline-block;
   outline: none;
   line-height: 90%;
+  padding-left: 10px;
 }
 
 .description:focus {
-  background: rgb(2, 0, 36);
-  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(245, 235, 156, 1) 0%, rgba(252, 252, 244, 1) 100%);
+  border-left: darkgray solid 1px;
 }
 
 .task:hover {
