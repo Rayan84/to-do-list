@@ -7,18 +7,32 @@ export function removeItem(obj){
       let entry = existingEntries.find(obj => obj.index == deletedItem);
       existingEntries.splice(existingEntries.indexOf(entry), 1);
       localStorage.setItem('todos', JSON.stringify(existingEntries));
+      changeIndexes();
 }
 
 export let deleteCompleted = () => {
-  console.log('deleteCompleted called...')
   let completedTasks = document.querySelectorAll('.completed');
   let existingEntries = JSON.parse(localStorage.getItem('todos'));
   let deletedItems = existingEntries.filter(obj => obj.completed !== true);
   localStorage.setItem('todos', JSON.stringify(deletedItems));
   for (let i = 0; i < completedTasks.length; i++){
   completedTasks[i].parentElement.remove();
-
    }
+   changeIndexes();
+}
+
+export let changeIndexes = () => {
+  let lis = document.querySelectorAll('LI');
+  console.log('changeIndex called...');
+  let existingEntries = JSON.parse(localStorage.getItem('todos'));
+  for (let i = 0; i < existingEntries.length; i++){
+    existingEntries[i].index = i;
+    console.log(existingEntries[i].index);
+    lis[i].id = i;
+  }
+  localStorage.setItem('todos', JSON.stringify(existingEntries));
+  //location.reload();
+  
 }
 
 export function showTrashBin(){
