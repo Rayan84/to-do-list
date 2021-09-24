@@ -22,8 +22,13 @@ export let deleteCompleted = () => {
 }
 
 export function showTrashBin(){
-  if (this.innerHTML == '\u22ee'){
-    this.innerHTML = '&#128465;';
+    let trashCan = this;
+  if (trashCan.textContent == '\u22ee'){
+    trashCan.innerHTML = '&#128465;';
+    setTimeout(function(){
+      console.log('timing...');
+      trashCan.innerHTML = '\u22ee';
+    }, 3000);
   } else {
     removeItem(this.parentElement);
   }
