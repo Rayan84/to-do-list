@@ -3,8 +3,12 @@ import {saveToLocalStorage} from './checkbox.js';
 import {retrieveLocalStorage} from './checkbox.js';
 import {checkboxFunctions} from './checkbox.js';
 import {saveChanges} from './checkbox.js';
+import { showTrashBin } from './add-and-remove.js';
+import {deleteCompleted} from './add-and-remove.js';
+import { countBy } from 'lodash';
 
 export let renderList = (item, num) => {
+  console.log('rendering new item...');
   const listContainer = document.getElementById('list-container');
   let task = document.createElement('LI');
   let descriptionSpan = document.createElement('SPAN');
@@ -16,6 +20,7 @@ export let renderList = (item, num) => {
   let checkbox = document.createElement('INPUT');
   let span2 = document.createElement('SPAN');
   let span2Text = document.createTextNode('\u22ee');
+  span2.addEventListener('click', showTrashBin);
   checkbox.setAttribute('type','checkbox');
   checkbox.setAttribute('class', 'checkbox');
   task.setAttribute('class', 'task');
@@ -49,13 +54,15 @@ input.addEventListener('keypress', function (e){
 
 let addNewTask = () => {
   let indexing;
-  if(localStorage.getItem('todos') == null){
+  console.log(localStorage.getItem('todos').length);
+  if(localStorage.getItem('todos').length < 3){
     indexing = 0;
     //console.log('Storage is empty')
   }else {
    // console.log('Storage is not empty');
     var arrayFromStroage = JSON.parse(localStorage.getItem("todos"));
-    indexing = arrayFromStroage.length;
+    const lastItem = arrayFromStroage[arrayFromStroage.length - 1];
+    indexing = lastItem.index + 1;
   }
   let newTask = {
   "index": indexing,
@@ -64,16 +71,10 @@ let addNewTask = () => {
   }
   //console.lo('New task index is: ' + indexing);
   saveToLocalStorage(newTask);
-  renderList(newTask, indexing)
+  //localStorage.setItem('count', indexing);
+  renderList(newTask, indexing);
 }
 
-let deleteCompleted = () => {
-  //console.log('deleteCompleted called...')
-  let completedTasks = document.querySelectorAll('.completed');
-  for (let i = 0; i < completedTasks.length; i++){
-    completedTasks[i].remove();
-  }
-}
 document.getElementById('delete-completed').addEventListener('click', deleteCompleted);
 
 window.addEventListener('load', retrieveLocalStorage);
