@@ -16,6 +16,7 @@ h1 {
   padding: 30px;
   -webkit-box-shadow: -5px 9px 17px 6px rgba(0, 0, 0, 0.71);
   box-shadow: -5px 9px 17px 6px rgba(0, 0, 0, 0.71);
+  border-radius: 8px;
 }
 
 #input {
@@ -29,7 +30,7 @@ h1 {
 }
 
 #enter-button:hover {
-  background-color: darkgray;
+  color: red;
   cursor: pointer;
 }
 
@@ -63,6 +64,14 @@ h1 {
   text-align: center;
   background-color: rgba(0, 0, 0, 0.1);
   padding: 15px;
+  transition: background-color 1s ease-out;
+  font-size: large;
+  font-weight: 600;
+}
+
+#delete-completed:hover {
+  background-color: palegoldenrod;
+  color:tomato;
 }
 
 .float-right,
