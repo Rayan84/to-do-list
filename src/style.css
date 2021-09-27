@@ -48,8 +48,8 @@ h1 {
   padding-left: 10px;
 }
 
-.description:focus {
-  border-left: darkgray solid 1px;
+.task:focus-within {
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(245, 235, 156, 1) 0%, rgba(252, 252, 244, 1) 100%);
 }
 
 .task:hover {
